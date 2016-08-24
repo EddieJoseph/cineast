@@ -20,3 +20,5 @@ thumbnails/
 .idea/
 queryImages/
 representative_frames/
+/lib/
+doc/
