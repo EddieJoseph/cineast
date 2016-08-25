@@ -3,6 +3,7 @@ package ch.unibas.cs.dbis.cineast.api;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.net.Socket;
 import java.sql.PreparedStatement;
@@ -64,7 +65,25 @@ public class JSONAPIThread extends Thread {
 		 */
 		JsonObject _return = new JsonObject();
 		try {
+			
+			
+//			PrintWriter writer = new PrintWriter("D:admin/desktop/request.json", "UTF-8");
+//			int cur=reader.read();
+//			while(cur!=-1){
+//				System.out.println(cur);
+//			writer.print((char)cur);
+//			writer.flush();
+//			cur=reader.read();
+//			}
+//			writer.close();
+			
+			
 			JsonObject clientJSON = JsonObject.readFrom(reader);
+			
+			PrintWriter writer = new PrintWriter("D:admin/desktop/request.json", "UTF-8");
+			writer.write(clientJSON.toString());
+			writer.close();
+			
 
 			switch (clientJSON.get("queryType").asString()) {
 				/*
